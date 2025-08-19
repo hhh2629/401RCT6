@@ -1,0 +1,23 @@
+[project_search_path]: ./
+[map_search_path]: ./
+[project_file_path]: .//F401RC.uvprojx
+[ map_file_path]: .//F401RC/F401RC.map
+[parse_keil_map start]: 
+[Found keyword]: ----------Execution Region----------
+[name]:  ER_IROM1 
+[Exec base]: 0x8000000
+[Size]: 0x5244
+[Max]: 0x40000
+[Found keyword]: ----------Execution Region----------
+[name]:  RW_IRAM1 
+[Exec base]: 0x20000000
+[Size]: 0xee0
+[Max]: 0x10000
+[parse_keil_map over printf bar]: 
+  RW_IRAM1 :0x20000000
+   64.00 KB :|¡ö___________________|    5.81 % (    3.72 KB /    64.00 KB) [61728 B]
+  ER_IROM1 :0x8000000
+  256.00 KB :|¡ö___________________|    8.03 % (   20.57 KB /   256.00 KB) [241084 B]
+[export csv]: ./F401RC_sort_by_flash.csv
+[export csv]: ./F401RC_sort_by_ram.csv
+[export xlsx]: F401RC_analysis.xlsx
