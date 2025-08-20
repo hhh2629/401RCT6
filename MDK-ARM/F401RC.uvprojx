@@ -606,19 +606,19 @@
               <FilePath>..\User\Usart_Idel_Config.c</FilePath>
             </File>
             <File>
-              <FileName>fonts.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\User\fonts.c</FilePath>
-            </File>
-            <File>
               <FileName>W25Qxx.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\W25Qxx.c</FilePath>
             </File>
             <File>
-              <FileName>ssd1306.c</FileName>
+              <FileName>st7789.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\User\ssd1306.c</FilePath>
+              <FilePath>..\User\st7789.c</FilePath>
+            </File>
+            <File>
+              <FileName>fonts1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\fonts1.c</FilePath>
             </File>
           </Files>
         </Group>

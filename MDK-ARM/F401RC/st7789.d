@@ -30,6 +30,6 @@ f401rc/st7789.o: ..\User\st7789.c ..\User\st7789.h ..\Core\Inc\spi.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
-  ..\User\fonts.h C:\Keil_v5\ARM\ARMCLANG\include\string.h \
+  ..\User\fonts1.h C:\Keil_v5\ARM\ARMCLANG\include\string.h \
   C:\Keil_v5\ARM\ARMCLANG\include\stdarg.h \
   C:\Keil_v5\ARM\ARMCLANG\include\stdio.h

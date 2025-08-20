@@ -29,12 +29,14 @@
 #include <stdio.h>
 #include "Usart_Idel_Config.h"
 #include "W25Qxx.h"
-#include "ssd1306.h"
+//#include "ssd1306.h"
+#include "st7789.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+//ÄÚ´æ
+//$K\keil5_disp_size_bar.exe
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -61,6 +63,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+uint8_t p[]={0x01,0x03,0x05,0xff};
 /* USER CODE END 0 */
 
 /**
@@ -98,17 +101,18 @@ int main(void)
   MX_I2C1_Init();
   MX_SPI2_Init();
   MX_SPI3_Init();
+  MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
-    Usart2_Idel_Config();
-
-    ssd1306_Init();
-    ssd1306_FlipScreenVertically();
-    ssd1306_Clear();
-    ssd1306_SetColor(White);
-    
-    ssd1306_SetCursor(0, 0);
-    ssd1306_WriteString("HELLO", Font_16x26);
-    ssd1306_UpdateScreen();
+  Usart2_Idel_Config();
+  
+//    ssd1306_Init();
+//    ssd1306_FlipScreenVertically();
+//    ssd1306_Clear();
+//    ssd1306_SetColor(White);
+//    
+//    ssd1306_SetCursor(0, 0);
+//    ssd1306_WriteString("HELLO", Font_16x26);
+//    ssd1306_UpdateScreen();
     
 	//  W25Qxx_Sector_Erase(0x000000);
 	//  W25Qxx_Wait_Free();
@@ -117,8 +121,22 @@ int main(void)
 	//  W25Qxx_Write_Page(0x000000,p,256);
 	//  W25Qxx_Wait_Free();
 	 // W25Qxx_Print_Sector(0x000000);
-
 	// printf("id:%d\r\n",W25Qxx_Read_ID());
+    
+   ST7789_Init();
+
+   ST7789_Clear(0x07E0);
+   HAL_Delay(1000);
+   ST7789_Clear(0x001F);
+   HAL_Delay(1000);
+   ST7789_Clear(0x03E0);
+   HAL_Delay(1000);
+   ST7789_Clear(0x0410);
+   HAL_Delay(1000);
+   ST7789_Clear(0x05F0);
+   HAL_Delay(1000);
+
+   
   /* USER CODE END 2 */
 
   /* Infinite loop */

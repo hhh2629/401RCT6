@@ -1,14 +1,12 @@
-f401rc/lcd.o: ..\User\lcd.c ..\User\lcd.h \
-  C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h \
-  C:\Keil_v5\ARM\ARMCLANG\include\stdint.h \
-  C:\Keil_v5\ARM\ARMCLANG\include\math.h ..\Core\Inc\main.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
+f401rc/lcd.o: ..\User\lcd.c ..\User\lcd.h ..\Core\Inc\spi.h \
+  ..\Core\Inc\main.h ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
   ..\Core\Inc\stm32f4xx_hal_conf.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h \
   ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h \
   ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f401xc.h \
   ..\Drivers\CMSIS\Include\core_cm4.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdint.h \
   D:\ZJ\F401RC\Drivers\CMSIS\Include\cmsis_version.h \
   D:\ZJ\F401RC\Drivers\CMSIS\Include\cmsis_compiler.h \
   D:\ZJ\F401RC\Drivers\CMSIS\Include\cmsis_armclang.h \
@@ -32,4 +30,5 @@ f401rc/lcd.o: ..\User\lcd.c ..\User\lcd.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
-  ..\Core\Inc\spi.h ..\User\lcd_font.h
+  C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\math.h ..\User\lcd_font.h

@@ -34,5 +34,4 @@ f401rc/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Core\Inc\usart.h ..\Core\Inc\gpio.h \
   C:\Keil_v5\ARM\ARMCLANG\include\stdio.h ..\User\Usart_Idel_Config.h \
   C:\Keil_v5\ARM\ARMCLANG\include\string.h ..\User\W25Qxx.h \
-  ..\User\ssd1306.h ..\User\ssd1306_defines.h ..\User\fonts.h \
-  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h
+  ..\User\st7789.h ..\User\fonts1.h
