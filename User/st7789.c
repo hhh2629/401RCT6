@@ -4,11 +4,10 @@
 #include <stdio.h>
 
 
-#define BUFFER_SIZE   2048  // 缓冲区大小设置为2048字节
-#define PIXEL_SIZE    2     // RGB565格式每个像素2字节
 
-static uint8_t frame_buffer[BUFFER_SIZE];  // 1024字节缓冲区
-static volatile uint8_t dma_transfer_complete = 0;
+
+uint8_t frame_buffer[BUFFER_SIZE];  // 字节缓冲区
+volatile uint8_t dma_transfer_complete = 0;
 
 
 void LCD_Writ_Bus(uint8_t *dat,uint16_t size) 
@@ -31,7 +30,7 @@ static void ST7789_Write_Cmd(uint8_t cmd)
     
     HAL_GPIO_WritePin(ST7789_CS_PORT, ST7789_CS_PIN, GPIO_PIN_SET);
 }
-static void ST7789_Write_Data(uint8_t data)
+ void ST7789_Write_Data(uint8_t data)
 {
     HAL_GPIO_WritePin(ST7789_CS_PORT, ST7789_CS_PIN, GPIO_PIN_RESET);
     HAL_GPIO_WritePin(ST7789_DC_PORT, ST7789_DC_PIN, GPIO_PIN_SET);
@@ -41,7 +40,7 @@ static void ST7789_Write_Data(uint8_t data)
     
     HAL_GPIO_WritePin(ST7789_CS_PORT, ST7789_CS_PIN, GPIO_PIN_SET);
 }
-static void ST7789_Write_Datas(uint8_t *buff, size_t buff_size)
+void ST7789_Write_Datas(uint8_t *buff, size_t buff_size)
 {
     HAL_GPIO_WritePin(ST7789_CS_PORT, ST7789_CS_PIN, GPIO_PIN_RESET);
     HAL_GPIO_WritePin(ST7789_DC_PORT, ST7789_DC_PIN, GPIO_PIN_SET);
@@ -88,7 +87,7 @@ void ST7789_Init()
 
 
     ST7789_Write_Cmd(0x36);		
-    ST7789_Write_Data(0x00);
+    ST7789_Write_Data(0xA0);
     ST7789_Write_Cmd(0x3A);
     ST7789_Write_Data(0x05);
     ST7789_Write_Cmd(0xB2);		
@@ -132,9 +131,30 @@ void ST7789_Init()
     ST7789_Write_Cmd (0x29);	
 
     HAL_Delay(50);
-    ST7789_Clear(0xFFFF);
+    //ST7789_Clear(0xFFFF);
+    ST7789_Clear(0x00);
 }
-static void ST7789_SetAddressWindow(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1)
+
+void ST7789_SetRotation(uint8_t d)
+{
+   if(d==1)
+   {
+       ST7789_Write_Cmd(0x36);
+       ST7789_Write_Data(0x00);
+   }
+   if(d==2)
+   {
+       ST7789_Write_Cmd(0x36);
+       ST7789_Write_Data(0x60);      
+   }
+   if(d==3)
+   {
+       ST7789_Write_Cmd(0x36);
+       ST7789_Write_Data(0xA0);
+   }
+}
+
+void ST7789_SetAddressWindow(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1)
 {
     uint16_t x_start = x0, x_end = x1;
     uint16_t y_start = y0, y_end = y1;
@@ -195,6 +215,56 @@ void ST7789_Clear(uint16_t color)
         remaining_bytes -= transfer_size;
     }
     
+    HAL_GPIO_WritePin(ST7789_CS_PORT, ST7789_CS_PIN, GPIO_PIN_SET);
+}
+
+/**
+ * @brief 填充指定矩形区域
+ * @param x1 左上角X坐标
+ * @param y1 左上角Y坐标
+ * @param x2 右下角X坐标
+ * @param y2 右下角Y坐标
+ * @param color 填充颜色
+ */
+void ST7789_FillRect(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t color)
+{
+    // 计算矩形区域尺寸
+    uint16_t width = x2 - x1 + 1;
+    uint16_t height = y2 - y1 + 1;
+    const uint32_t total_pixels = width * height;
+    const uint32_t total_bytes = total_pixels * PIXEL_SIZE;
+
+    // 填充颜色数据到缓冲区
+    uint8_t color_high = (color >> 8) & 0xFF;
+    uint8_t color_low = color & 0xFF;
+    for (uint16_t i = 0; i < BUFFER_SIZE; i += 2)
+    {
+        frame_buffer[i] = color_high;
+        frame_buffer[i+1] = color_low;
+    }
+
+    // 设置矩形区域地址窗口
+    ST7789_SetAddressWindow(x1, y1, x2, y2);
+
+    // 分块DMA传输
+    uint32_t remaining_bytes = total_bytes;
+    HAL_GPIO_WritePin(ST7789_CS_PORT, ST7789_CS_PIN, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(ST7789_DC_PORT, ST7789_DC_PIN, GPIO_PIN_SET);
+
+    while (remaining_bytes > 0)
+    {
+        uint16_t transfer_size = remaining_bytes > BUFFER_SIZE ? BUFFER_SIZE : remaining_bytes;
+        dma_transfer_complete = 0;
+
+        if (HAL_SPI_Transmit_DMA(&ST7789_SPI_PORT, frame_buffer, transfer_size) != HAL_OK)
+        {
+            // 添加错误处理代码
+        }
+
+        while (dma_transfer_complete == 0);
+        remaining_bytes -= transfer_size;
+    }
+
     HAL_GPIO_WritePin(ST7789_CS_PORT, ST7789_CS_PIN, GPIO_PIN_SET);
 }
 
@@ -290,6 +360,15 @@ void ST7789_DrawImage(uint16_t x, uint16_t y, uint16_t w, uint16_t h, const uint
     ST7789_SetAddressWindow(x, y, x + w - 1, y + h - 1);
     ST7789_Write_Datas((uint8_t *)data, sizeof(uint16_t) * w * h);
 }
+
+void ST7789_DrawImage2(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, const uint16_t *data)
+{
+
+    ST7789_SetAddressWindow(x1, y1, x2, y2);
+    ST7789_Write_Datas((uint8_t *)data, (x2-x1+1)*(y2-y1+1)*2);
+    
+}
+
 
 void ST7789_ShowChar(uint16_t x, uint16_t y, uint16_t color, uint16_t bgcolor,char ch, FontDef font)
 {

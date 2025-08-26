@@ -21,6 +21,7 @@
 #include "dma.h"
 #include "i2c.h"
 #include "spi.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -31,6 +32,11 @@
 #include "W25Qxx.h"
 //#include "ssd1306.h"
 #include "st7789.h"
+
+#include "lvgl.h"                // 它为整个LVGL提供了更完整的头文件引用
+#include "lv_port_disp.h"        // LVGL的显示支持
+
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -64,6 +70,7 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 uint8_t p[]={0x01,0x03,0x05,0xff};
+
 /* USER CODE END 0 */
 
 /**
@@ -102,9 +109,10 @@ int main(void)
   MX_SPI2_Init();
   MX_SPI3_Init();
   MX_SPI1_Init();
+  MX_TIM11_Init();
   /* USER CODE BEGIN 2 */
   Usart2_Idel_Config();
-  
+  HAL_TIM_Base_Start_IT(&htim11);
 //    ssd1306_Init();
 //    ssd1306_FlipScreenVertically();
 //    ssd1306_Clear();
@@ -123,20 +131,16 @@ int main(void)
 	 // W25Qxx_Print_Sector(0x000000);
 	// printf("id:%d\r\n",W25Qxx_Read_ID());
     
-   ST7789_Init();
+    ST7789_Init();
+    lv_init();                             // LVGL 初始化
+    lv_port_disp_init();                   // 注册LVGL的显示任务
 
-   ST7789_Clear(0x07E0);
-   HAL_Delay(1000);
-   ST7789_Clear(0x001F);
-   HAL_Delay(1000);
-   ST7789_Clear(0x03E0);
-   HAL_Delay(1000);
-   ST7789_Clear(0x0410);
-   HAL_Delay(1000);
-   ST7789_Clear(0x05F0);
-   HAL_Delay(1000);
 
-   
+    lv_obj_t * label = lv_label_create(lv_scr_act());
+    lv_label_set_text(label, "New text");
+
+    uint32_t cnt=0;
+    
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -146,8 +150,22 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-        HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_14);
-        HAL_Delay(200);
+        
+        HAL_Delay(1);
+        
+        cnt++;
+        if(cnt%5==0)
+        {
+            lv_timer_handler();
+        }
+        if(cnt%200==0)
+        {
+            HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_14);
+            cnt=0;
+        }
+                
+
+        
 	}
   /* USER CODE END 3 */
 }

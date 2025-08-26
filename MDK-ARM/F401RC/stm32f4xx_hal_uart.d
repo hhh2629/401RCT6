@@ -8,10 +8,10 @@ f401rc/stm32f4xx_hal_uart.o: \
   ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f401xc.h \
   ..\Drivers\CMSIS\Include\core_cm4.h \
   C:\Keil_v5\ARM\ARMCLANG\include\stdint.h \
-  D:\ZJ\F401RC\Drivers\CMSIS\Include\cmsis_version.h \
-  D:\ZJ\F401RC\Drivers\CMSIS\Include\cmsis_compiler.h \
-  D:\ZJ\F401RC\Drivers\CMSIS\Include\cmsis_armclang.h \
-  D:\ZJ\F401RC\Drivers\CMSIS\Include\mpu_armv7.h \
+  D:\About_Git\401RCT6\Drivers\CMSIS\Include\cmsis_version.h \
+  D:\About_Git\401RCT6\Drivers\CMSIS\Include\cmsis_compiler.h \
+  D:\About_Git\401RCT6\Drivers\CMSIS\Include\cmsis_armclang.h \
+  D:\About_Git\401RCT6\Drivers\CMSIS\Include\mpu_armv7.h \
   ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h \
   C:\Keil_v5\ARM\ARMCLANG\include\stddef.h \
@@ -30,4 +30,6 @@ f401rc/stm32f4xx_hal_uart.o: \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h \
+  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h \
+  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h
