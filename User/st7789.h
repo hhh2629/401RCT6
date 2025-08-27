@@ -21,7 +21,7 @@
 
 #define ABS(x) ((x) > 0 ? (x) : -(x))
 
-#define BUFFER_SIZE   3200  // 缓冲区大小设置为3200字节
+#define BUFFER_SIZE   256  // 缓冲区大小设置为3200字节
 #define PIXEL_SIZE    2     // RGB565格式每个像素2字节
 extern uint8_t frame_buffer[BUFFER_SIZE];  // 字节缓冲区
 extern volatile uint8_t dma_transfer_complete ;

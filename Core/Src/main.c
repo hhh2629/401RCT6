@@ -33,8 +33,6 @@
 //#include "ssd1306.h"
 #include "st7789.h"
 
-#include "lvgl.h"                // 它为整个LVGL提供了更完整的头文件引用
-#include "lv_port_disp.h"        // LVGL的显示支持
 
 
 /* USER CODE END Includes */
@@ -69,7 +67,6 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint8_t p[]={0x01,0x03,0x05,0xff};
 
 /* USER CODE END 0 */
 
@@ -121,23 +118,23 @@ int main(void)
 //    ssd1306_SetCursor(0, 0);
 //    ssd1306_WriteString("HELLO", Font_16x26);
 //    ssd1306_UpdateScreen();
+  
+//  uint8_t p[256];  
+//  W25Qxx_Sector_Erase(0x000000);
+//  W25Qxx_Wait_Free();
+//  for(uint16_t i=0;i<256;i++)
+//        p[i]=i;
+//    
+//  W25Qxx_Write_Page(0x000000,p,256);
+//  W25Qxx_Wait_Free();
+//  W25Qxx_Write_Page(0x000100,p,256);
+//  W25Qxx_Wait_Free();
+//  
+//  W25Qxx_Print_Sector(0x000000);
+//  printf_DMA("id:%x\r\n",W25Qxx_Read_ID());
     
-	//  W25Qxx_Sector_Erase(0x000000);
-	//  W25Qxx_Wait_Free();
-	//  for(uint16_t i=0;i<256;i++)
-	//    p[i]=i;
-	//  W25Qxx_Write_Page(0x000000,p,256);
-	//  W25Qxx_Wait_Free();
-	 // W25Qxx_Print_Sector(0x000000);
-	// printf("id:%d\r\n",W25Qxx_Read_ID());
-    
-    ST7789_Init();
-    lv_init();                             // LVGL 初始化
-    lv_port_disp_init();                   // 注册LVGL的显示任务
+    //ST7789_Init();
 
-
-    lv_obj_t * label = lv_label_create(lv_scr_act());
-    lv_label_set_text(label, "New text");
 
     uint32_t cnt=0;
     
@@ -156,7 +153,7 @@ int main(void)
         cnt++;
         if(cnt%5==0)
         {
-            lv_timer_handler();
+            
         }
         if(cnt%200==0)
         {

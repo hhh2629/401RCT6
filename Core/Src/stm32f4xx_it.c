@@ -26,7 +26,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
-#include "lvgl.h"
+
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
@@ -244,7 +244,7 @@ void TIM1_TRG_COM_TIM11_IRQHandler(void)
   /* USER CODE END TIM1_TRG_COM_TIM11_IRQn 0 */
   HAL_TIM_IRQHandler(&htim11);
   /* USER CODE BEGIN TIM1_TRG_COM_TIM11_IRQn 1 */
-    lv_tick_inc(1);
+  
   /* USER CODE END TIM1_TRG_COM_TIM11_IRQn 1 */
 }
 
