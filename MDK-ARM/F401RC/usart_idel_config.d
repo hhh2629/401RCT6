@@ -35,4 +35,4 @@ f401rc/usart_idel_config.o: ..\User\Usart_Idel_Config.c \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
   C:\Keil_v5\ARM\ARMCLANG\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\include\string.h ..\User\W25Qxx.h \
-  ..\Core\Inc\spi.h
+  ..\Core\Inc\spi.h ..\User\st7789.h ..\User\fonts1.h

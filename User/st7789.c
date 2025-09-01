@@ -8,7 +8,7 @@
 
 uint8_t frame_buffer[BUFFER_SIZE];  // 字节缓冲区
 volatile uint8_t dma_transfer_complete = 0;
-
+volatile uint8_t dma_recv_complete = 0;
 
 void LCD_Writ_Bus(uint8_t *dat,uint16_t size) 
 {	
@@ -73,6 +73,15 @@ void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
     if (hspi == &ST7789_SPI_PORT)
     {
         dma_transfer_complete = 1; // 设置传输完成标志
+    }
+
+}
+
+void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+    if (hspi == &hspi3)
+    {
+        dma_recv_complete = 1; // 设置传输完成标志
     }
 }
 

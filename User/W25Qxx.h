@@ -3,6 +3,7 @@
 #include "main.h"
 #include "spi.h"
 #include "Usart_Idel_Config.h"
+#include "st7789.h"
 /*
 需要：
 1.GPIO
@@ -19,6 +20,7 @@
 */
 #define W25Q32
 
+extern uint8_t W25Qxx_Address_Len;
 extern SPI_HandleTypeDef hspi3;
 #define W25Qxx_SPI_Handle hspi3
 #define W25Qxx_CS_GPIOx GPIOC
@@ -36,4 +38,6 @@ void W25Qxx_Write_Sector(uint32_t Address, uint8_t *Buf, uint32_t Len);
 void W25Qxx_Write(uint32_t Address, uint8_t *Buf, uint32_t Len);
 void W25Qxx_Print_Sector(uint32_t Address);
 void W25Qxx_Read_Data_P256(uint32_t Address, uint8_t *Buf, uint32_t Len);
+void W25Qxx_CS_Low(void);
+uint8_t W25Qxx_SPI_RW_Byte(uint8_t TxData);
 #endif

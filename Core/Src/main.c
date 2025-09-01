@@ -68,6 +68,51 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+
+
+#define len 512
+uint8_t temp[len]={0};
+void W25Q32_Show_On_LCD_DMA(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t Address)
+{
+    
+    uint32_t current_addr = Address;
+   
+    uint32_t total_bytes = w * h * 2;  // RGB565格式总字节数
+    uint32_t remaining = total_bytes;
+
+    ST7789_SetAddressWindow(x, y, x + w - 1, y + h - 1);
+
+    W25Qxx_CS_Low();
+    W25Qxx_SPI_RW_Byte(0x03); // 发送读取命令
+    
+    if (W25Qxx_Address_Len == 32)
+        W25Qxx_SPI_RW_Byte((Address & 0xFF000000) >> 24); // 32位地址处理
+
+    W25Qxx_SPI_RW_Byte((Address & 0x00FF0000) >> 16); // 发送地址高位
+    W25Qxx_SPI_RW_Byte((Address & 0x0000FF00) >> 8);  // 发送地址中位
+    W25Qxx_SPI_RW_Byte((Address & 0x000000FF) >> 0);  // 发送地址低位
+
+    while (remaining > 0)
+    {
+        uint16_t read_size = (remaining > len) ? len : remaining;
+        HAL_SPI_Receive_DMA(&hspi3,temp,read_size);
+        // 等待DMA传输完成
+        while (!dma_recv_complete);
+        dma_recv_complete = 0;
+
+        ST7789_Write_Datas(temp, read_size);
+        // 更新地址和剩余长度
+        current_addr += read_size;
+        remaining -= read_size;
+
+        // 等待DMA传输完成
+        while (!dma_transfer_complete);
+        dma_transfer_complete = 0;
+    }
+
+    W25Qxx_CS_Hight();
+}
+
 /**
  * @brief 从W25Q32读取指定区域数据并显示到ST7789 LCD指定位置
  * @param x: LCD显示起始X坐标
@@ -79,7 +124,7 @@ void SystemClock_Config(void);
  */
 void W25Q32_Show_On_LCD(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t addr)
 {
-  #define  READ_SIZE 1024
+  #define  READ_SIZE 256
     uint8_t read_buf[READ_SIZE];
     uint32_t total_bytes = w * h * 2;  // RGB565格式总字节数
     uint32_t remaining = total_bytes;
@@ -114,6 +159,8 @@ void W25Q32_Show_On_LCD(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t
         dma_transfer_complete = 0;
     }
 }
+
+
 
 /* USER CODE END 0 */
 
@@ -186,15 +233,21 @@ int main(void)
     uint32_t cnt=0;
     printf_DMA("Star\r\n");
     
-    //Recv_Count = 153608 Last_Addr = 25808
-    W25Q32_Show_On_LCD(0,0,320,240,0x0);
-    HAL_Delay(2000);
-    //Recv_Count = 85928 Last_Addr = 3afa8
-    W25Q32_Show_On_LCD(0,0,179,240,0x26000);
-    
+//    //Recv_Count = 153608 Last_Addr = 25808
+//    W25Q32_Show_On_LCD(0,0,320,240,0x0);
+      W25Q32_Show_On_LCD_DMA(0,0,320,240,0x0);
+      HAL_Delay(2000);
+//    
+//    //Recv_Count = 85928 Last_Addr = 3afa8
+//    W25Q32_Show_On_LCD(0,0,179,240,0x26000);
+      W25Q32_Show_On_LCD_DMA(0,0,179,240,0x26000);
+      HAL_Delay(2000);
+//    
+//    //Recv_Count = 131208 Last_Addr = 5b088
+//    W25Q32_Show_On_LCD(0,0,320,205,0x3b000); 
+      W25Q32_Show_On_LCD_DMA(0,0,320,205,0x3B000);
 
-
-
+ 
   //Usart_to_W25q32();
   /* USER CODE END 2 */
 
