@@ -6,18 +6,18 @@
 [Found keyword]: ----------Execution Region----------
 [name]:  ER_IROM1 
 [Exec base]: 0x8000000
-[Size]: 0x36bc
+[Size]: 0x65c8
 [Max]: 0x40000
 [Found keyword]: ----------Execution Region----------
 [name]:  RW_IRAM1 
 [Exec base]: 0x20000000
-[Size]: 0xe28
+[Size]: 0xfc0
 [Max]: 0x10000
 [parse_keil_map over printf bar]: 
   RW_IRAM1 :0x20000000
-   64.00 KB :|¡ö___________________|    5.53 % (    3.54 KB /    64.00 KB) [61912 B]
+   64.00 KB :|¡ö___________________|    6.15 % (    3.94 KB /    64.00 KB) [61504 B]
   ER_IROM1 :0x8000000
-  256.00 KB :|¡ö___________________|    5.35 % (   13.68 KB /   256.00 KB) [248132 B]
+  256.00 KB :|¡ö___________________|    9.94 % (   25.45 KB /   256.00 KB) [236088 B]
 [export csv]: ./F401RC_sort_by_flash.csv
 [export csv]: ./F401RC_sort_by_ram.csv
 [export xlsx]: F401RC_analysis.xlsx

@@ -35,4 +35,5 @@ void W25Qxx_CS_Hight(void);
 void W25Qxx_Write_Sector(uint32_t Address, uint8_t *Buf, uint32_t Len);
 void W25Qxx_Write(uint32_t Address, uint8_t *Buf, uint32_t Len);
 void W25Qxx_Print_Sector(uint32_t Address);
+void W25Qxx_Read_Data_P256(uint32_t Address, uint8_t *Buf, uint32_t Len);
 #endif

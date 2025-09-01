@@ -68,6 +68,53 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+/**
+ * @brief 从W25Q32读取指定区域数据并显示到ST7789 LCD指定位置
+ * @param x: LCD显示起始X坐标
+ * @param y: LCD显示起始Y坐标
+ * @param w: 显示宽度
+ * @param h: 显示高度
+ * @param addr: W25Q32数据起始地址
+ * @note RGB565格式(2字节/像素),每次读取256字节(128像素)
+ */
+void W25Q32_Show_On_LCD(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t addr)
+{
+  #define  READ_SIZE 1024
+    uint8_t read_buf[READ_SIZE];
+    uint32_t total_bytes = w * h * 2;  // RGB565格式总字节数
+    uint32_t remaining = total_bytes;
+    uint32_t current_addr = addr;
+
+    // 参数有效性检查
+    if (w == 0 || h == 0 || 
+        x + w > ST7789_WIDTH || 
+        y + h > ST7789_HEIGHT || 
+        current_addr + total_bytes > 0x400000)  // W25Q32总容量4MB
+        return;
+
+    // 设置LCD显示窗口
+    ST7789_SetAddressWindow(x, y, x + w - 1, y + h - 1);
+
+    while (remaining > 0)
+    {
+        uint16_t read_size = (remaining > READ_SIZE) ? READ_SIZE : remaining;
+
+        // 从W25Q32读取数据
+        W25Qxx_Read_Data_P256(current_addr, read_buf, read_size);
+
+        // DMA传输到LCD
+        ST7789_Write_Datas(read_buf, read_size);
+
+        // 更新地址和剩余长度
+        current_addr += read_size;
+        remaining -= read_size;
+
+        // 等待DMA传输完成
+        while (!dma_transfer_complete);
+        dma_transfer_complete = 0;
+    }
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -119,7 +166,7 @@ int main(void)
 //    ssd1306_WriteString("HELLO", Font_16x26);
 //    ssd1306_UpdateScreen();
   
-//  uint8_t p[256];  
+ 
 //  W25Qxx_Sector_Erase(0x000000);
 //  W25Qxx_Wait_Free();
 //  for(uint16_t i=0;i<256;i++)
@@ -132,12 +179,23 @@ int main(void)
 //  
 //  W25Qxx_Print_Sector(0x000000);
 //  printf_DMA("id:%x\r\n",W25Qxx_Read_ID());
-    
-    //ST7789_Init();
+     
+    ST7789_Init();
 
 
     uint32_t cnt=0;
+    printf_DMA("Star\r\n");
     
+    //Recv_Count = 153608 Last_Addr = 25808
+    W25Q32_Show_On_LCD(0,0,320,240,0x0);
+    HAL_Delay(2000);
+    //Recv_Count = 85928 Last_Addr = 3afa8
+    W25Q32_Show_On_LCD(0,0,179,240,0x26000);
+    
+
+
+
+  //Usart_to_W25q32();
   /* USER CODE END 2 */
 
   /* Infinite loop */

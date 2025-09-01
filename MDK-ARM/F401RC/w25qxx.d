@@ -33,4 +33,5 @@ f401rc/w25qxx.o: ..\User\W25Qxx.c ..\User\W25Qxx.h ..\Core\Inc\main.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
   ..\Core\Inc\spi.h ..\User\Usart_Idel_Config.h ..\Core\Inc\usart.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\include\string.h
