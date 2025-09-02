@@ -314,7 +314,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>2</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -675,6 +675,11 @@
               <FileName>fonts1.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\fonts1.c</FilePath>
+            </File>
+            <File>
+              <FileName>multi_button.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\multi_button.c</FilePath>
             </File>
           </Files>
         </Group>

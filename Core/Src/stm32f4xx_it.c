@@ -26,12 +26,12 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
-
+uint8_t key_tick=0;
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#include "multi_button.h"
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -261,7 +261,12 @@ void TIM1_TRG_COM_TIM11_IRQHandler(void)
   /* USER CODE END TIM1_TRG_COM_TIM11_IRQn 0 */
   HAL_TIM_IRQHandler(&htim11);
   /* USER CODE BEGIN TIM1_TRG_COM_TIM11_IRQn 1 */
-  
+  key_tick++;
+  if(key_tick>5)
+  {
+      button_ticks();
+      key_tick=0;
+  }
   /* USER CODE END TIM1_TRG_COM_TIM11_IRQn 1 */
 }
 

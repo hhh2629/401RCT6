@@ -32,7 +32,7 @@
 #include "W25Qxx.h"
 //#include "ssd1306.h"
 #include "st7789.h"
-
+#include "multi_button.h"
 
 
 /* USER CODE END Includes */
@@ -204,6 +204,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
   Usart2_Idel_Config();
   HAL_TIM_Base_Start_IT(&htim11);
+  
+  
 //    ssd1306_Init();
 //    ssd1306_FlipScreenVertically();
 //    ssd1306_Clear();
@@ -235,20 +237,25 @@ int main(void)
     
 //    //Recv_Count = 153608 Last_Addr = 25808
 //    W25Q32_Show_On_LCD(0,0,320,240,0x0);
-      W25Q32_Show_On_LCD_DMA(0,0,320,240,0x0);
-      HAL_Delay(2000);
+//      W25Q32_Show_On_LCD_DMA(0,0,320,240,0x0);
+//      HAL_Delay(2000);
 //    
 //    //Recv_Count = 85928 Last_Addr = 3afa8
 //    W25Q32_Show_On_LCD(0,0,179,240,0x26000);
-      W25Q32_Show_On_LCD_DMA(0,0,179,240,0x26000);
-      HAL_Delay(2000);
+//      W25Q32_Show_On_LCD_DMA(0,0,179,240,0x26000);
+//      HAL_Delay(2000);
 //    
 //    //Recv_Count = 131208 Last_Addr = 5b088
 //    W25Q32_Show_On_LCD(0,0,320,205,0x3b000); 
-      W25Q32_Show_On_LCD_DMA(0,0,320,205,0x3B000);
+//      W25Q32_Show_On_LCD_DMA(0,0,320,205,0x3B000);
 
- 
+    KEY_Init();
   //Usart_to_W25q32();
+  
+
+  
+  
+  
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -264,7 +271,7 @@ int main(void)
         cnt++;
         if(cnt%5==0)
         {
-            
+            test();
         }
         if(cnt%200==0)
         {

@@ -1,4 +1,6 @@
-f401rc/stm32f4xx_it.o: ..\Core\Src\stm32f4xx_it.c ..\Core\Inc\main.h \
+f401rc/multi_button.o: ..\User\multi_button.c ..\User\multi_button.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdint.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\string.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
   ..\Core\Inc\stm32f4xx_hal_conf.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h \
@@ -6,7 +8,6 @@ f401rc/stm32f4xx_it.o: ..\Core\Src\stm32f4xx_it.c ..\Core\Inc\main.h \
   ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h \
   ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f401xc.h \
   ..\Drivers\CMSIS\Include\core_cm4.h \
-  C:\Keil_v5\ARM\ARMCLANG\include\stdint.h \
   D:\About_Git\401RCT6\Drivers\CMSIS\Include\cmsis_version.h \
   D:\About_Git\401RCT6\Drivers\CMSIS\Include\cmsis_compiler.h \
   D:\About_Git\401RCT6\Drivers\CMSIS\Include\cmsis_armclang.h \
@@ -32,5 +33,4 @@ f401rc/stm32f4xx_it.o: ..\Core\Src\stm32f4xx_it.c ..\Core\Inc\main.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
-  ..\Core\Inc\stm32f4xx_it.h ..\User\multi_button.h \
-  C:\Keil_v5\ARM\ARMCLANG\include\string.h ..\Core\Inc\usart.h
+  ..\Core\Inc\main.h ..\Core\Inc\usart.h

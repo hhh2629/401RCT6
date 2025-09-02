@@ -33,6 +33,7 @@
 "f401rc\w25qxx.o"
 "f401rc\st7789.o"
 "f401rc\fonts1.o"
+"f401rc\multi_button.o"
 --strict --scatter "F401RC\F401RC.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
