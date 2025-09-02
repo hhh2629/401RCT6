@@ -45,7 +45,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+//extern const unsigned char gImage_image[153608];
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -80,8 +80,11 @@ void W25Q32_Show_On_LCD_DMA(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint
     uint32_t total_bytes = w * h * 2;  // RGB565格式总字节数
     uint32_t remaining = total_bytes;
 
-    ST7789_SetAddressWindow(x, y, x + w - 1, y + h - 1);
+    ST7789_SetAddressWindow(x, y, x + w-1, y + h-1);
 
+    HAL_GPIO_WritePin(ST7789_CS_PORT, ST7789_CS_PIN, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(ST7789_DC_PORT, ST7789_DC_PIN, GPIO_PIN_SET);
+    
     W25Qxx_CS_Low();
     W25Qxx_SPI_RW_Byte(0x03); // 发送读取命令
     
@@ -94,23 +97,32 @@ void W25Q32_Show_On_LCD_DMA(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint
 
     while (remaining > 0)
     {
+        dma_recv_complete = 0;
         uint16_t read_size = (remaining > len) ? len : remaining;
         HAL_SPI_Receive_DMA(&hspi3,temp,read_size);
         // 等待DMA传输完成
         while (!dma_recv_complete);
         dma_recv_complete = 0;
 
-        ST7789_Write_Datas(temp, read_size);
+        //ST7789_Write_Datas(temp, read_size);
+        
+        dma_transfer_complete = 0;
+        HAL_SPI_Transmit_DMA(&ST7789_SPI_PORT, temp, read_size);
+   
+        // 等待DMA传输完成
+        while (!dma_transfer_complete);
+        dma_transfer_complete = 0;
+        
+        
         // 更新地址和剩余长度
         current_addr += read_size;
         remaining -= read_size;
 
-        // 等待DMA传输完成
-        while (!dma_transfer_complete);
-        dma_transfer_complete = 0;
+
     }
 
     W25Qxx_CS_Hight();
+    HAL_GPIO_WritePin(ST7789_CS_PORT, ST7789_CS_PIN, GPIO_PIN_SET);
 }
 
 /**
@@ -226,7 +238,7 @@ int main(void)
 //  W25Qxx_Write_Page(0x000100,p,256);
 //  W25Qxx_Wait_Free();
 //  
-//  W25Qxx_Print_Sector(0x000000);
+//   W25Qxx_Print_Sector(0x5C000);
 //  printf_DMA("id:%x\r\n",W25Qxx_Read_ID());
      
     ST7789_Init();
@@ -249,11 +261,14 @@ int main(void)
 //    W25Q32_Show_On_LCD(0,0,320,205,0x3b000); 
 //      W25Q32_Show_On_LCD_DMA(0,0,320,205,0x3B000);
 
-    KEY_Init();
-  //Usart_to_W25q32();
-  
 
-  
+    //if(!HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15))
+    //Usart_to_W25q32();
+    KEY_Init();
+    
+   //ST7789_DrawImage(0,0,320,240,gImage_image);
+    ST7789_FillRect(0,0,320,100,0X0400);
+    ST7789_FillRect(0,100,320,200,0X04f0);
   
   
   /* USER CODE END 2 */

@@ -408,7 +408,7 @@ void test()
     }
     if(T==2)
     {
-        W25Q32_Show_On_LCD_DMA(0,0,179,240,0x26000);
+        W25Q32_Show_On_LCD_DMA(0,0,320,240,0x5C000);
         T=0;
     }
     if(T==3)

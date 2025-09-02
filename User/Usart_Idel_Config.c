@@ -120,7 +120,7 @@ void Usart_to_W25q32()
       //     break;
       //  }
    }
-   printf_DMA("Wait Time Out!\r\n");
+   
    while (EN)
    {
       // 串口接收256字节数据
@@ -130,6 +130,9 @@ void Usart_to_W25q32()
          // 写入256字节到Flash
          W25Qxx_Write_Page(current_flash_addr, rx_buffer, RECEIVE_SIZE);
          W25Qxx_Wait_Free();
+          
+         
+          
          memset(rx_buffer, 0XFF, RECEIVE_SIZE);
 
          // 更新地址和计数
@@ -147,6 +150,7 @@ void Usart_to_W25q32()
             sector_byte_count = 0; // 重置扇区字节计数
          }
          Time_Out = 0;
+
       }
       else if (temp == HAL_TIMEOUT)
       {
