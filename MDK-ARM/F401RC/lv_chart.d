@@ -215,4 +215,6 @@ f401rc/lv_chart.o: ..\lvgl\src\extra\widgets\chart\lv_chart.c \
   ..\lvgl\src\extra\widgets\chart\..\..\..\..\src\extra\widgets\imgbtn\..\..\..\lvgl.h \
   ..\lvgl\src\extra\widgets\chart\..\..\..\..\src\extra\widgets\span\lv_span.h \
   ..\lvgl\src\extra\widgets\chart\..\..\..\..\src\extra\widgets\span\..\..\..\lvgl.h \
+  ..\lvgl\CLOCK\custom\lv_dclock.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h ..\lvgl\lvgl.h \
   ..\lvgl\src\extra\widgets\chart\..\..\..\misc\lv_assert.h

@@ -216,6 +216,8 @@ f401rc/lv_theme_default.o: \
   ..\lvgl\src\extra\themes\default\..\..\..\..\src\extra\widgets\imgbtn\..\..\..\lvgl.h \
   ..\lvgl\src\extra\themes\default\..\..\..\..\src\extra\widgets\span\lv_span.h \
   ..\lvgl\src\extra\themes\default\..\..\..\..\src\extra\widgets\span\..\..\..\lvgl.h \
+  ..\lvgl\CLOCK\custom\lv_dclock.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h ..\lvgl\lvgl.h \
   ..\lvgl\src\extra\themes\default\lv_theme_default.h \
   ..\lvgl\src\extra\themes\default\..\..\..\misc\lv_gc.h \
   ..\lvgl\src\extra\themes\default\..\..\..\misc\..\lv_conf_internal.h \

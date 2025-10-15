@@ -340,7 +340,7 @@
               <MiscControls>-Wno-invalid-source-encoding</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F401xC</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../User;../lvgl;../lvgl/examples/porting;../lvgl/src;../lvgl/demos/benchmark</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../User;../lvgl;../lvgl/examples/porting;../lvgl/src;../lvgl/demos/benchmark;../lvgl/CLOCK;../lvgl/CLOCK/custom;../lvgl/CLOCK/generated</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -676,10 +676,92 @@
               <FileType>1</FileType>
               <FilePath>..\User\fonts1.c</FilePath>
             </File>
+            <File>
+              <FileName>LV_BIN_Image.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\LV_BIN_Image.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>LVGL_myGui</GroupName>
+          <Files>
+            <File>
+              <FileName>custom.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\lvgl\CLOCK\custom\custom.c</FilePath>
+            </File>
+            <File>
+              <FileName>custom.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\lvgl\CLOCK\custom\custom.h</FilePath>
+            </File>
+            <File>
+              <FileName>lv_conf_ext.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\lvgl\CLOCK\custom\lv_conf_ext.h</FilePath>
+            </File>
+            <File>
+              <FileName>events_init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\lvgl\CLOCK\generated\events_init.c</FilePath>
+            </File>
+            <File>
+              <FileName>events_init.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\lvgl\CLOCK\generated\events_init.h</FilePath>
+            </File>
+            <File>
+              <FileName>gui_guider.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\lvgl\CLOCK\generated\gui_guider.c</FilePath>
+            </File>
+            <File>
+              <FileName>gui_guider.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\lvgl\CLOCK\generated\gui_guider.h</FilePath>
+            </File>
+            <File>
+              <FileName>setup_scr_screen.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\lvgl\CLOCK\generated\setup_scr_screen.c</FilePath>
+            </File>
+            <File>
+              <FileName>widgets_init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\lvgl\CLOCK\generated\widgets_init.c</FilePath>
+            </File>
+            <File>
+              <FileName>widgets_init.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\lvgl\CLOCK\generated\widgets_init.h</FilePath>
+            </File>
+            <File>
+              <FileName>guider_customer_fonts.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\lvgl\CLOCK\generated\guider_customer_fonts\guider_customer_fonts.h</FilePath>
+            </File>
+            <File>
+              <FileName>lv_font_Alatsi_Regular_13.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\lvgl\CLOCK\generated\guider_fonts\lv_font_Alatsi_Regular_13.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_font_Alatsi_Regular_29.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\lvgl\CLOCK\generated\guider_fonts\lv_font_Alatsi_Regular_29.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_font_montserratMedium_16.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\lvgl\CLOCK\generated\guider_fonts\lv_font_montserratMedium_16.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_dclock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\lvgl\CLOCK\custom\lv_dclock.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>LVGL_conf</GroupName>
@@ -1583,6 +1665,11 @@
               <FileName>lv_textarea.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\lvgl\src\widgets\lv_textarea.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_color.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\lvgl\src\misc\lv_color.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -215,4 +215,6 @@ f401rc/lv_span.o: ..\lvgl\src\extra\widgets\span\lv_span.c \
   ..\lvgl\src\extra\widgets\span\..\..\..\..\src\extra\widgets\imgbtn\lv_imgbtn.h \
   ..\lvgl\src\extra\widgets\span\..\..\..\..\src\extra\widgets\imgbtn\..\..\..\lvgl.h \
   ..\lvgl\src\extra\widgets\span\..\..\..\..\src\extra\widgets\span\lv_span.h \
+  ..\lvgl\CLOCK\custom\lv_dclock.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h ..\lvgl\lvgl.h \
   ..\lvgl\src\extra\widgets\span\..\..\..\misc\lv_assert.h

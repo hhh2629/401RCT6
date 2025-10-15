@@ -215,6 +215,8 @@ f401rc/lv_animimg.o: ..\lvgl\src\extra\widgets\animimg\lv_animimg.c \
   ..\lvgl\src\extra\widgets\animimg\..\..\..\..\src\extra\widgets\imgbtn\..\..\..\lvgl.h \
   ..\lvgl\src\extra\widgets\animimg\..\..\..\..\src\extra\widgets\span\lv_span.h \
   ..\lvgl\src\extra\widgets\animimg\..\..\..\..\src\extra\widgets\span\..\..\..\lvgl.h \
+  ..\lvgl\CLOCK\custom\lv_dclock.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h ..\lvgl\lvgl.h \
   ..\lvgl\src\extra\widgets\animimg\..\..\..\misc\lv_assert.h \
   ..\lvgl\src\extra\widgets\animimg\..\..\..\draw\lv_img_decoder.h \
   ..\lvgl\src\extra\widgets\animimg\..\..\..\misc\lv_fs.h \

@@ -212,4 +212,6 @@ f401rc/lv_theme.o: ..\lvgl\src\core\lv_theme.c \
   ..\lvgl\src\core\..\..\src\extra\widgets\imgbtn\lv_imgbtn.h \
   ..\lvgl\src\core\..\..\src\extra\widgets\imgbtn\..\..\..\lvgl.h \
   ..\lvgl\src\core\..\..\src\extra\widgets\span\lv_span.h \
-  ..\lvgl\src\core\..\..\src\extra\widgets\span\..\..\..\lvgl.h
+  ..\lvgl\src\core\..\..\src\extra\widgets\span\..\..\..\lvgl.h \
+  ..\lvgl\CLOCK\custom\lv_dclock.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h ..\lvgl\lvgl.h

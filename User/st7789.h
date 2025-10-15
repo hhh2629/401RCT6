@@ -3,7 +3,7 @@
 
 #include "spi.h"
 #include "fonts1.h"
-
+ 
 
 #define ST7789_SPI_PORT hspi1
 // Pin
@@ -25,6 +25,7 @@
 #define PIXEL_SIZE    2     // RGB565格式每个像素2字节
 extern uint8_t frame_buffer[BUFFER_SIZE];  // 字节缓冲区
 extern volatile uint8_t dma_transfer_complete ;
+extern volatile uint8_t dma_recv_complete ;
 
 void ST7789_Init();
 void ST7789_Write_Data(uint8_t data);

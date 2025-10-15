@@ -139,6 +139,8 @@ f401rc/lv_obj.o: ..\lvgl\src\core\lv_obj.c ..\lvgl\src\core\lv_obj.h \
   ..\lvgl\src\core\..\extra\libs\gif\..\..\..\..\src\lv_api_map.h \
   ..\lvgl\src\core\..\extra\libs\gif\..\..\..\..\src\..\lvgl.h \
   ..\lvgl\src\core\..\extra\libs\gif\..\..\..\..\src\extra\lv_extra.h \
+  ..\lvgl\CLOCK\custom\lv_dclock.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h ..\lvgl\lvgl.h \
   ..\lvgl\src\core\..\extra\libs\qrcode\lv_qrcode.h \
   ..\lvgl\src\core\..\extra\libs\qrcode\..\..\..\lvgl.h \
   ..\lvgl\src\core\..\extra\libs\sjpg\lv_sjpg.h \

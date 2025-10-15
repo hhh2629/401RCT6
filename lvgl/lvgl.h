@@ -67,6 +67,7 @@ extern "C" {
  * EXTRAS
  *----------------*/
 #include "src/extra/lv_extra.h"
+#include "lv_dclock.h"
 
 /*********************
  *      DEFINES

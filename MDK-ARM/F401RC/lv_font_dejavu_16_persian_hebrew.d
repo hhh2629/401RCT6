@@ -213,4 +213,6 @@ f401rc/lv_font_dejavu_16_persian_hebrew.o: \
   ..\lvgl\src\font\..\..\src\extra\widgets\imgbtn\lv_imgbtn.h \
   ..\lvgl\src\font\..\..\src\extra\widgets\imgbtn\..\..\..\lvgl.h \
   ..\lvgl\src\font\..\..\src\extra\widgets\span\lv_span.h \
-  ..\lvgl\src\font\..\..\src\extra\widgets\span\..\..\..\lvgl.h
+  ..\lvgl\src\font\..\..\src\extra\widgets\span\..\..\..\lvgl.h \
+  ..\lvgl\CLOCK\custom\lv_dclock.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h ..\lvgl\lvgl.h

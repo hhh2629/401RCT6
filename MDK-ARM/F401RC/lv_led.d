@@ -215,4 +215,6 @@ f401rc/lv_led.o: ..\lvgl\src\extra\widgets\led\lv_led.c \
   ..\lvgl\src\extra\widgets\led\..\..\..\..\src\extra\widgets\imgbtn\..\..\..\lvgl.h \
   ..\lvgl\src\extra\widgets\led\..\..\..\..\src\extra\widgets\span\lv_span.h \
   ..\lvgl\src\extra\widgets\led\..\..\..\..\src\extra\widgets\span\..\..\..\lvgl.h \
+  ..\lvgl\CLOCK\custom\lv_dclock.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h ..\lvgl\lvgl.h \
   ..\lvgl\src\extra\widgets\led\..\..\..\misc\lv_assert.h

@@ -212,4 +212,6 @@ f401rc/lv_font_loader.o: ..\lvgl\src\font\lv_font_loader.c \
   ..\lvgl\src\font\..\..\src\extra\widgets\imgbtn\..\..\..\lvgl.h \
   ..\lvgl\src\font\..\..\src\extra\widgets\span\lv_span.h \
   ..\lvgl\src\font\..\..\src\extra\widgets\span\..\..\..\lvgl.h \
+  ..\lvgl\CLOCK\custom\lv_dclock.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h ..\lvgl\lvgl.h \
   ..\lvgl\src\font\..\misc\lv_fs.h ..\lvgl\src\font\lv_font_loader.h

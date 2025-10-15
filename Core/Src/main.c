@@ -36,6 +36,11 @@
 #include "lvgl.h"                // 它为整个LVGL提供了更完整的头文件引用
 #include "lv_port_disp.h"        // LVGL的显示支持
 
+#include "LV_BIN_Image.h"
+
+
+#include "gui_guider.h"
+lv_ui guider_ui;
 
 /* USER CODE END Includes */
 
@@ -52,7 +57,60 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
+#define len 512
+uint8_t temp[len]={0};
+void W25Q32_Show_On_LCD_DMA(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t Address)
+{
+    Address=Address+8;
+    uint32_t current_addr = Address;
+   
+    uint32_t total_bytes = w * h * 2;  // RGB565格式总字节数
+    uint32_t remaining = total_bytes;
 
+    ST7789_SetAddressWindow(x, y, x + w-1, y + h-1);
+
+    HAL_GPIO_WritePin(ST7789_CS_PORT, ST7789_CS_PIN, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(ST7789_DC_PORT, ST7789_DC_PIN, GPIO_PIN_SET);
+    
+    W25Qxx_CS_Low();
+    W25Qxx_SPI_RW_Byte(0x03); // 发送读取命令
+    
+    if (W25Qxx_Address_Len == 32)
+        W25Qxx_SPI_RW_Byte((Address & 0xFF000000) >> 24); // 32位地址处理
+
+    W25Qxx_SPI_RW_Byte((Address & 0x00FF0000) >> 16); // 发送地址高位
+    W25Qxx_SPI_RW_Byte((Address & 0x0000FF00) >> 8);  // 发送地址中位
+    W25Qxx_SPI_RW_Byte((Address & 0x000000FF) >> 0);  // 发送地址低位
+
+    while (remaining > 0)
+    {
+        dma_recv_complete = 0;
+        uint16_t read_size = (remaining > len) ? len : remaining;
+        HAL_SPI_Receive_DMA(&hspi3,temp,read_size);
+        // 等待DMA传输完成
+        while (!dma_recv_complete);
+        dma_recv_complete = 0;
+
+        //ST7789_Write_Datas(temp, read_size);
+        
+        dma_transfer_complete = 0;
+        HAL_SPI_Transmit_DMA(&ST7789_SPI_PORT, temp, read_size);
+   
+        // 等待DMA传输完成
+        while (!dma_transfer_complete);
+        dma_transfer_complete = 0;
+        
+        
+        // 更新地址和剩余长度
+        current_addr += read_size;
+        remaining -= read_size;
+
+
+    }
+
+    W25Qxx_CS_Hight();
+    HAL_GPIO_WritePin(ST7789_CS_PORT, ST7789_CS_PIN, GPIO_PIN_SET);
+}
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -136,11 +194,19 @@ int main(void)
     lv_port_disp_init();                   // 注册LVGL的显示任务
 
 
-    lv_obj_t * label = lv_label_create(lv_scr_act());
-    lv_label_set_text(label, "New text");
+//    lv_obj_t * label = lv_label_create(lv_scr_act());
+//    lv_label_set_text(label, "New text");
 
-    uint32_t cnt=0;
+   
+       
+    setup_ui(&guider_ui);
+
     
+    
+    W25Q32_Show_On_LCD_DMA(0,0,320,240,0x5C000);
+    
+    uint32_t cnt=0;
+     
   /* USER CODE END 2 */
 
   /* Infinite loop */

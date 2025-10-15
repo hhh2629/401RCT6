@@ -8,7 +8,7 @@
 
 uint8_t frame_buffer[BUFFER_SIZE];  // 字节缓冲区
 volatile uint8_t dma_transfer_complete = 0;
-
+volatile uint8_t dma_recv_complete = 0;
 
 void LCD_Writ_Bus(uint8_t *dat,uint16_t size) 
 {	
@@ -77,7 +77,14 @@ void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
 }
 
 
-
+void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+    if (hspi == &hspi3)
+    {
+        dma_recv_complete = 1; // 设置传输完成标志
+        
+    }
+}
 
 
 void ST7789_Init()
@@ -132,7 +139,7 @@ void ST7789_Init()
 
     HAL_Delay(50);
     //ST7789_Clear(0xFFFF);
-    ST7789_Clear(0x00);
+    //ST7789_Clear(0x00);
 }
 
 void ST7789_SetRotation(uint8_t d)

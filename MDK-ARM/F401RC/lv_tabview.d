@@ -215,4 +215,6 @@ f401rc/lv_tabview.o: ..\lvgl\src\extra\widgets\tabview\lv_tabview.c \
   ..\lvgl\src\extra\widgets\tabview\..\..\..\..\src\extra\widgets\imgbtn\..\..\..\lvgl.h \
   ..\lvgl\src\extra\widgets\tabview\..\..\..\..\src\extra\widgets\span\lv_span.h \
   ..\lvgl\src\extra\widgets\tabview\..\..\..\..\src\extra\widgets\span\..\..\..\lvgl.h \
+  ..\lvgl\CLOCK\custom\lv_dclock.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h ..\lvgl\lvgl.h \
   ..\lvgl\src\extra\widgets\tabview\..\..\..\misc\lv_assert.h

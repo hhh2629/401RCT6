@@ -206,4 +206,6 @@ f401rc/stm32f4xx_it.o: ..\Core\Src\stm32f4xx_it.c ..\Core\Inc\main.h \
   ..\lvgl\src\extra\widgets\imgbtn\lv_imgbtn.h \
   ..\lvgl\src\extra\widgets\imgbtn\..\..\..\lvgl.h \
   ..\lvgl\src\extra\widgets\span\lv_span.h \
-  ..\lvgl\src\extra\widgets\span\..\..\..\lvgl.h
+  ..\lvgl\src\extra\widgets\span\..\..\..\lvgl.h \
+  ..\lvgl\CLOCK\custom\lv_dclock.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h

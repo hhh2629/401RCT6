@@ -214,4 +214,6 @@ f401rc/lv_imgbtn.o: ..\lvgl\src\extra\widgets\imgbtn\lv_imgbtn.c \
   ..\lvgl\src\extra\widgets\imgbtn\..\..\..\..\src\extra\widgets\led\..\..\..\lvgl.h \
   ..\lvgl\src\extra\widgets\imgbtn\..\..\..\..\src\extra\widgets\imgbtn\lv_imgbtn.h \
   ..\lvgl\src\extra\widgets\imgbtn\..\..\..\..\src\extra\widgets\span\lv_span.h \
-  ..\lvgl\src\extra\widgets\imgbtn\..\..\..\..\src\extra\widgets\span\..\..\..\lvgl.h
+  ..\lvgl\src\extra\widgets\imgbtn\..\..\..\..\src\extra\widgets\span\..\..\..\lvgl.h \
+  ..\lvgl\CLOCK\custom\lv_dclock.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h ..\lvgl\lvgl.h

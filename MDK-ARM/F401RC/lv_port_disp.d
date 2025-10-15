@@ -175,7 +175,9 @@ f401rc/lv_port_disp.o: ..\lvgl\examples\porting\lv_port_disp.c \
   ..\lvgl\src\extra\widgets\imgbtn\lv_imgbtn.h \
   ..\lvgl\src\extra\widgets\imgbtn\..\..\..\lvgl.h \
   ..\lvgl\src\extra\widgets\span\lv_span.h \
-  ..\lvgl\src\extra\widgets\span\..\..\..\lvgl.h ..\User\st7789.h \
+  ..\lvgl\src\extra\widgets\span\..\..\..\lvgl.h \
+  ..\lvgl\CLOCK\custom\lv_dclock.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h ..\User\st7789.h \
   ..\Core\Inc\spi.h ..\Core\Inc\main.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
   ..\Core\Inc\stm32f4xx_hal_conf.h \

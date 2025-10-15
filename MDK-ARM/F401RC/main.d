@@ -211,4 +211,7 @@ f401rc/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\lvgl\src\extra\widgets\imgbtn\..\..\..\lvgl.h \
   ..\lvgl\src\extra\widgets\span\lv_span.h \
   ..\lvgl\src\extra\widgets\span\..\..\..\lvgl.h \
-  ..\lvgl\examples\porting\lv_port_disp.h
+  ..\lvgl\CLOCK\custom\lv_dclock.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h \
+  ..\lvgl\examples\porting\lv_port_disp.h ..\User\LV_BIN_Image.h \
+  ..\lvgl\CLOCK\generated\gui_guider.h

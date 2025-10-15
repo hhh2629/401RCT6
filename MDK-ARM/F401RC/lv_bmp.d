@@ -214,4 +214,6 @@ f401rc/lv_bmp.o: ..\lvgl\src\extra\libs\bmp\lv_bmp.c \
   ..\lvgl\src\extra\libs\bmp\..\..\..\..\src\extra\widgets\imgbtn\lv_imgbtn.h \
   ..\lvgl\src\extra\libs\bmp\..\..\..\..\src\extra\widgets\imgbtn\..\..\..\lvgl.h \
   ..\lvgl\src\extra\libs\bmp\..\..\..\..\src\extra\widgets\span\lv_span.h \
-  ..\lvgl\src\extra\libs\bmp\..\..\..\..\src\extra\widgets\span\..\..\..\lvgl.h
+  ..\lvgl\src\extra\libs\bmp\..\..\..\..\src\extra\widgets\span\..\..\..\lvgl.h \
+  ..\lvgl\CLOCK\custom\lv_dclock.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h ..\lvgl\lvgl.h

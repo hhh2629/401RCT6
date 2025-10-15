@@ -3,7 +3,7 @@
 extern UART_HandleTypeDef huart1;
 extern UART_HandleTypeDef huart2;
 //ESP01S UART2
-#define U2_BUFF_SIZE	(1024)			   //接收缓存大小
+#define U2_BUFF_SIZE	(256)			   //接收缓存大小
 uint8_t rx_buffer[U2_BUFF_SIZE];      // 创建接收缓存,大小为BUFF_SIZE
 
 
