@@ -74,7 +74,7 @@ void SystemClock_Config(void);
 uint8_t temp[len]={0};
 void W25Q32_Show_On_LCD_DMA(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t Address)
 {
-    
+    Address=Address+8;
     uint32_t current_addr = Address;
    
     uint32_t total_bytes = w * h * 2;  // RGB565格式总字节数
@@ -140,6 +140,7 @@ void W25Q32_Show_On_LCD(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t
     uint8_t read_buf[READ_SIZE];
     uint32_t total_bytes = w * h * 2;  // RGB565格式总字节数
     uint32_t remaining = total_bytes;
+    addr=addr+8;
     uint32_t current_addr = addr;
 
     // 参数有效性检查
